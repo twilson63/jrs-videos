@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom'
 import { map } from 'ramda'
 import { connect } from 'react-redux'
 import { getGroups } from '../actions'
+const DB = process.env.REACT_APP_DB
 
 const GroupItem = props => {
   let url = 'http://fillmurray.com/200/200'
   if (props.id) {
-    url = `http://localhost:5984/jrs-videos/${props.id.replace(
-      '/',
-      '%2f'
-    )}/logo.png`
+    url = `${DB}/${props.id.replace('/', '%2f')}/logo.png`
   }
   return (
     <li className='flex items-center lh-copy pa3 ph0-l bb b--black-10'>
